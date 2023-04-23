@@ -1,4 +1,4 @@
-/*  
+/*
     Generate a sine wave using a 12-bit DAC as fast as possible.
     The difficulty is on optimizing the code to generate the sine wave with
     the highest possible frequency.
@@ -195,23 +195,9 @@ const float SIN_TABLE[] = {
     0.0175,
 };
 
-/* void SPI_Init()
-{
-    TRISA.F1 = 0; // SCK pin as output (master mode)
-    TRISA.F0 = 0; // SDO pin as output
-    // TRISA.F2 = 1; // SDI pin as input
-    // Don't care for SDI pin because it is not used, this enables pin as General purpose Output
-    TRISA.F4 = 0; // CS pin as output
-
-    SSP1CON1 = 0b00100000; // SPI Master mode, clock = FOSC/4
-    SSP1CON3 = 0b00000000; // SPI mode 0, SS pin control by software
-    SSP1STAT = 0b01000000; // SMP = 0, CKE = 1
-} */
-
 void main()
 {
     unsigned int deg = 0;
-    float sin;
     int valueDAC = 0;
     unsigned short temp1;
     unsigned short temp2;
@@ -226,26 +212,18 @@ void main()
 
     while (1)
     {
-        PORTA.F5 = 1;
         valueDAC = 819 + (2866.5 * SIN_TABLE[deg]); // 1.0 + abs(3.5 * sin(deg))
-        PORTA.F5 = 0;
 
-        PORTA.F5 = 1;
-        // Send High Byte
+        // High Byte
         temp1 = (valueDAC >> 8) & 0x0F; // Store valueDAC[11..8] to temp[3..0]
         temp1 |= 0x30;                  // Define DAC setting, see MCP4921 datasheet
-        // Send Low Byte
+        // Low Byte
         temp2 = valueDAC; // Store valueDAC[7..0] to temp[7..0]
-        PORTA.F5 = 0;
 
-        PORTA.F4 = 0; // Select DAC chip
-        PORTA.F5 = 1;
+        PORTA.F4 = 0;      // Select DAC chip
         SPI1_Write(temp1); // Send high byte via SPI
-        PORTA.F5 = 0;
-        PORTA.F5 = 1;
         SPI1_Write(temp2); // Send low byte via SPI
-        PORTA.F5 = 0;
-        PORTA.F4 = 1; // Deselect DAC chip
+        PORTA.F4 = 1;      // Deselect DAC chip
 
         deg++;
         if (deg >= 180)
