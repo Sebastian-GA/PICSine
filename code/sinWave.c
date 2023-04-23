@@ -227,11 +227,7 @@ void main()
     while (1)
     {
         PORTA.F5 = 1;
-        sin = 1.0 + (3.5 * SIN_TABLE[deg]); // 1.0 + abs(3.5 * sin(deg))
-        PORTA.F5 = 0;
-
-        PORTA.F5 = 1;
-        valueDAC = sin * 4095 / 5.0; // This takes too much time!
+        valueDAC = 819 + (2866.5 * SIN_TABLE[deg]); // 1.0 + abs(3.5 * sin(deg))
         PORTA.F5 = 0;
 
         PORTA.F5 = 1;
