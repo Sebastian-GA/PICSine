@@ -1,0 +1,5 @@
+main
+	SPI1_Init
+	double2int
+		SETIOV3224
+	SPI1_Write
