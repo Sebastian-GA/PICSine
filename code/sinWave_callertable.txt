@@ -20,6 +20,6 @@ main
 		RES032
 		SETFOV32
 		SETFUN32
-	double2word
+	double2int
 		SETIOV3224
 	SPI1_Write
