@@ -9,6 +9,8 @@
 *.dic
 *.dbg
 *.dlt
+*.asm
+*.lst
 
 # Ignore files - Proteus
 Project Backups/
