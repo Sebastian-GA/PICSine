@@ -198,7 +198,7 @@ const float DAC_TABLE[] = {
 void main()
 {
     unsigned int deg = 0;
-    int valueDAC = 0;
+    unsigned int valueDAC = 0;
     unsigned short temp1;
     unsigned short temp2;
 
@@ -207,7 +207,7 @@ void main()
     TRISA = 0x00;  // Set PORTA as output
     ANSELA = 0x00; // Set PORTA as digital
 
-    PORTA.F4 = 1; // Deselect DAC chip
+    PORTA.F4 = 1; // CS=1, communication disabled
     SPI1_Init();
 
     while (1)
@@ -220,10 +220,10 @@ void main()
         // Low Byte
         temp2 = valueDAC; // Store valueDAC[7..0] to temp[7..0]
 
-        PORTA.F4 = 0;      // Select DAC chip
+        PORTA.F4 = 0;      // DAC Selected, communication activated
         SPI1_Write(temp1); // Send high byte via SPI
         SPI1_Write(temp2); // Send low byte via SPI
-        PORTA.F4 = 1;      // Deselect DAC chip
+        PORTA.F4 = 1;      // DAC deselected, communication disabled
 
         deg++;
         if (deg >= 180)

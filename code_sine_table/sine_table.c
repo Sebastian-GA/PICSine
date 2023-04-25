@@ -198,7 +198,7 @@ const float SIN_TABLE[] = {
 void main()
 {
     unsigned int deg = 0;
-    int valueDAC = 0;
+    unsigned int valueDAC = 0;
     unsigned short temp1;
     unsigned short temp2;
 
@@ -212,7 +212,8 @@ void main()
 
     while (1)
     {
-        valueDAC = 819 + (2866.5 * SIN_TABLE[deg]); // 1.0 + abs(3.5 * sin(deg))
+        valueDAC = 2866.5 * SIN_TABLE[deg]; // The function is split in 2 for faster execution.
+        valueDAC = 819 + valueDAC;          // 1.0 + abs(3.5 * sin(deg))
 
         // High Byte
         temp1 = (valueDAC >> 8) & 0x0F; // Store valueDAC[11..8] to temp[3..0]
@@ -220,10 +221,10 @@ void main()
         // Low Byte
         temp2 = valueDAC; // Store valueDAC[7..0] to temp[7..0]
 
-        PORTA.F4 = 0;      // Select DAC chip
+        PORTA.F4 = 0;      // DAC Selected, communication activated
         SPI1_Write(temp1); // Send high byte via SPI
         SPI1_Write(temp2); // Send low byte via SPI
-        PORTA.F4 = 1;      // Deselect DAC chip
+        PORTA.F4 = 1;      // DAC deselected, communication disabled
 
         deg++;
         if (deg >= 180)

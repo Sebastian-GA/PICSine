@@ -32,9 +32,9 @@ The following table shows the results of the different options:
 
 | Option | Frequency (Hz) |
 | :---- | ----: |
-| Pre-built list of DAC values | 250 |
-| Pre-built list of sine values | 57.14 |
-| Using the sine function | 4.71 |
+| Pre-built list of DAC values | 256.41 |
+| Pre-built list of sine values | 66.62 |
+| Using the sine function | 4.74 |
 
 While the use of a pre-built list of values may not be appropriate for all applications, it was an effective technique for achieving high-frequency sine wave generation with 1 degree resolution with the PIC12F1822 microcontroller and the DAC MCP4921.
 
