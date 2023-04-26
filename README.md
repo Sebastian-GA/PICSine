@@ -26,7 +26,7 @@ The following options were considered for generating the sine wave:
 
 ## Results
 
-After testing and optimization, the highest frequency achieved was 256.41Hz. This was achieved by using a pre-built list of DAC values.
+After testing and optimization, the highest frequency achieved was 290.69Hz. This was achieved by using a pre-built list of DAC values.
 
 The following table shows the results of the different options:
 
