@@ -7,7 +7,7 @@ The goal of the project is to optimize the code to generate the sine wave with t
 ## Function to Generate
 
 The function to generate is:
-$$y = 1.5 + |3.5 * \sin(\omega t)|$$
+$$y = 1.0 + |3.5 * \sin(\omega t)|$$
 
 
 ## Screenshot
