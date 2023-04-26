@@ -41,8 +41,7 @@ Count=0
 [PLDS]
 Count=0
 [Useses]
-File0=SPI
-Count=1
+Count=0
 [EXPANDED_NODES]
 0=sine_table.mcppi
 1=Sources
