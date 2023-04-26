@@ -41,16 +41,15 @@ Count=0
 [PLDS]
 Count=0
 [Useses]
-File0=SPI
-File1=C_Math
-Count=2
+File0=C_Math
+Count=1
 [EXPANDED_NODES]
-Count=0
+0=sine_function.mcppi
+Count=1
 [LIB_EXPANDED_NODES]
 0=mikroE Libraries
 1=System Libraries
-58=C_Math
-Count=3
+Count=2
 [PROGRAMMER_TYPE]
 Value=mikroE mikroProg
 [CODEGRIP_OPTIONS]
